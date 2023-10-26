@@ -1,4 +1,4 @@
-# MPToVideo
+# MPToVideo Proposal
 
 Team Members:
 Edward Xiong(exiong2) **Captain**
