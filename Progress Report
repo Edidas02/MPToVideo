@@ -1,0 +1,21 @@
+Progress Report
+
+1. Progress so far
+
+As of right now, we have currently compiled all the necessary lecture video and matching lecture video transcript data. It is currently in a .csv format, so we plan on using tools like pandas
+to filter data and use for testing. We also have decided to use TF-IDF algorithms to determine the matching documents and have found datasets to test our model on. We have not included the data
+since it is fairly large and is only used to tune our preliminary model. Additionally, we have created a somewhat functional skeleton code that uses a TF-IDF algorithm to match our MP descriptions 
+to the correct lecture video.
+
+2. Remaining Tasks
+
+Our remaining tasks mainly involve the coding portion of creating our model. We currently only have a simple untuned skeleton version of a TF-IDF algorithm based on cosine similarity, so
+the results may not be particularly accurate for now. We also need to generate the MP descriptions into a parseable dataset, but since we have not seen some of the MP's we are pushing off on this 
+for a little bit.
+
+3. Challenges
+
+We have not faced too many challenges yet so far with our current progress. One issue that we came across with the data is that the transcript often has filler words like [MUSIC] describing the video.
+Since these are not relevant to the actual content, we had to ensure we ignored these words, so we ended up just removing them from the transcript. As for our actual model, we have not tested on the transcripts yet, so we 
+do not know accuracy scores, but we expect that later on it will be challenging to tune the best parameters to match our goal.
+
