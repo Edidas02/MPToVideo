@@ -1,7 +1,7 @@
 # MPToVideo Proposal
 
 Team Members:
-Edward Xiong(exiong2) **Captain**
+**Captain** Edward Xiong(exiong2)
 Prathinav Sai Merneedi(pmern2)
 
 2. We have chosen the LiveDataLab System. We plan on addressing the subtopic of linking MP descriptions to the corresponding lecture videos in Coursera.
