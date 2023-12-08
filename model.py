@@ -2,11 +2,19 @@ import pandas as pd
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-RELEVANCE_THRESHOLD = 0.3
+RELEVANCE_THRESHOLD = 0.25
 
 # Step 1: Preprocess the Data
 def preprocess_text(text):
-    # Implement text cleaning here (e.g., lowercasing, removing special characters)
+    """
+    Preprocesses the given text.
+
+    Parameters:
+    text (str): The text to be processed.
+
+    Returns:
+    str: The processed text.
+    """
     return text.lower()
 
 # Load CSV
@@ -20,6 +28,16 @@ tfidf_matrix = vectorizer.fit_transform(transcripts)
 
 # Step 3 & 4: Search Function
 def find_relevant_lectures(query, top_n=3):
+    """
+    Finds and returns the most relevant lectures for a given query.
+
+    Parameters:
+    query (str): The search query (assignment description).
+    top_n (int, optional): The number of top relevant lectures to return. Defaults to 5.
+
+    Returns:
+    list: A list of the most relevant lecture numbers.
+    """
     query_vec = vectorizer.transform([preprocess_text(query)])
     cosine_similarities = cosine_similarity(query_vec, tfidf_matrix).flatten()
 
@@ -34,7 +52,7 @@ def find_relevant_lectures(query, top_n=3):
 
 
 # Example Usage
-query = '''
+query1 = '''
 In this MP, you will get familiar with building and evaluating Search Engines.
 
 Part 1
@@ -49,5 +67,17 @@ Choose one of the above retrieval functions and one of its parameters (don’t c
 Change the ranker to your method and parameters. In the example, it is set to bm25. Use at least 10 different values for the parameter you chose; try to choose the values such that you can find a maximum MAP.
 '''
 
-relevant_lectures = find_relevant_lectures(query)
+query2 = '''
+In this part, you will develop a classifier and participate in a classification competition. Your classifier will be evaluated using F1 scores on 2 datasets: metamia dataset (created from metamia.com), MP3.1 Analogy dataset collected and annotated by you and your classmates.
+
+You are free to use any classifier (Hint: The web pages are really long, so models suitable for long document classification (e.g., Longformer) might work better) and fine-tune various hyper-parameters (e.g., learning rate, number of epochs). We recommend you start by experimenting with learning rate and number of epochs.
+
+To see how well you perform in the leaderboard, you need to run the prediction code on the test sets of both the datasets. For metamia dataset, save the results as metamia_results.csv and for mp3.1, save as mp3.1_results.csv. These two files must be located in the root folder in your repo, i.e., it should not be under any sub-folders.
+'''
+
+query3 = '''
+molecular biology
+'''
+
+relevant_lectures = find_relevant_lectures(query1)
 print("Lecture Numbers: ", relevant_lectures)
